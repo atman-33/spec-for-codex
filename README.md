@@ -1,4 +1,6 @@
-﻿# Kiro for Codex
+
+
+# Kiro for Codex
 
 [![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/v/atman-dev.kiro-for-codex.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=atman-dev.kiro-for-codex)
 [![Downloads](https://img.shields.io/vscode-marketplace/d/atman-dev.kiro-for-codex.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=atman-dev.kiro-for-codex)
@@ -66,7 +68,7 @@ The extension provides an organized sidebar for OVERVIEW, SPEC, STEERING, PROMPT
 
 ### Prerequisites
 
-- Codex CLI v0.28.0 or later installed and available on PATH
+- Codex CLI v0.38.0 or later installed and available on PATH
 - VS Code 1.84.0 or later
 
 Compatibility:
