@@ -22,7 +22,7 @@ export class CreateNewSpecPanelProvider {
 		}
 
 		this.panel = vscode.window.createWebviewPanel(
-			"kiroCodex.createNewSpec",
+			"specCodex.createNewSpec",
 			this.getPanelTitle(mode),
 			{ viewColumn: vscode.ViewColumn.Active, preserveFocus: false },
 			{

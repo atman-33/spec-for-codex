@@ -2,8 +2,8 @@ import * as vscode from "vscode";
 import { NotificationUtils } from "./notification-utils";
 
 export class UpdateChecker {
-	private static readonly SKIP_VERSION_KEY = "kiroCodex.skipVersion";
-	private static readonly LAST_CHECK_KEY = "kiroCodex.lastUpdateCheck";
+	private static readonly SKIP_VERSION_KEY = "specCodex.skipVersion";
+	private static readonly LAST_CHECK_KEY = "specCodex.lastUpdateCheck";
 	private static readonly CHECK_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
 
 	constructor(
@@ -70,7 +70,7 @@ export class UpdateChecker {
 	 * Get current extension version
 	 */
 	private getCurrentVersion(): string | undefined {
-		const extension = vscode.extensions.getExtension("atman-33.kiro-for-codex");
+		const extension = vscode.extensions.getExtension("atman-33.spec-for-codex");
 		return extension?.packageJSON.version;
 	}
 
@@ -83,7 +83,7 @@ export class UpdateChecker {
 				"[UpdateChecker] Fetching latest release from GitHub...",
 			);
 			const response = await fetch(
-				"https://api.github.com/repos/atman-33/kiro-for-cc/releases/latest",
+				"https://api.github.com/repos/atman-33/spec-for-codex/releases/latest",
 			);
 
 			if (!response.ok) {
@@ -113,7 +113,7 @@ export class UpdateChecker {
 		currentVersion: string,
 		latestVersion: string,
 	): void {
-		const message = `🎉 Kiro for CC ${latestVersion} is available! (current: ${currentVersion})`;
+		const message = `🎉 Spec for Codex ${latestVersion} is available! (current: ${currentVersion})`;
 		this.outputChannel.appendLine(
 			`[UpdateChecker] Showing update notification: ${message}`,
 		);
@@ -124,7 +124,7 @@ export class UpdateChecker {
 				if (selection === "View Changelog") {
 					// Open GitHub releases page
 					const releaseUrl =
-						"https://github.com/atman-33/kiro-for-cc/releases/latest";
+						"https://github.com/atman-33/spec-for-codex/releases/latest";
 					await vscode.env.openExternal(vscode.Uri.parse(releaseUrl));
 				} else if (selection === "Skip") {
 					// Remember skipped version

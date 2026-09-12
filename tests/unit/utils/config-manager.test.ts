@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, type Mock, test, vi } from "vitest";
 import { workspace } from "vscode";
 import {
 	ConfigManager,
-	type KiroCodexSettings,
+	type SpecCodexSettings,
 } from "../../../src/utils/config-manager";
 
 // Mock vscode
@@ -46,7 +46,7 @@ describe("ConfigManager (paths-only settings)", () => {
 	});
 
 	test("merges paths from existing file", async () => {
-		const fileContent: KiroCodexSettings = {
+		const fileContent: SpecCodexSettings = {
 			paths: {
 				specs: "custom/specs",
 				steering: ".codex/steering",
@@ -72,7 +72,7 @@ describe("ConfigManager (paths-only settings)", () => {
 	});
 
 	test("saveSettings writes only paths object", async () => {
-		const newSettings: KiroCodexSettings = {
+		const newSettings: SpecCodexSettings = {
 			paths: {
 				specs: "s",
 				steering: "t",

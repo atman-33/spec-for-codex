@@ -33,7 +33,7 @@ export let outputChannel: vscode.OutputChannel;
 
 export async function activate(context: vscode.ExtensionContext) {
 	// Create output channel for debugging
-	outputChannel = vscode.window.createOutputChannel("Kiro for Codex - Debug");
+	outputChannel = vscode.window.createOutputChannel("Spec for Codex - Debug");
 
 	// Initialize PromptLoader
 	try {
@@ -88,21 +88,21 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.window.registerTreeDataProvider(
-			"kiroCodex.views.overview",
+			"specCodex.views.overview",
 			overviewProvider,
 		),
 		vscode.window.registerTreeDataProvider(
-			"kiroCodex.views.specExplorer",
+			"specCodex.views.specExplorer",
 			specExplorer,
 		),
 		vscode.window.registerTreeDataProvider(
-			"kiroCodex.views.steeringExplorer",
+			"specCodex.views.steeringExplorer",
 			steeringExplorer,
 		),
 	);
 	context.subscriptions.push(
 		vscode.window.registerTreeDataProvider(
-			"kiroCodex.views.promptsExplorer",
+			"specCodex.views.promptsExplorer",
 			promptsExplorer,
 		),
 	);
@@ -182,7 +182,7 @@ async function initializeDefaultSettings() {
 		// Directory might already exist
 	}
 
-	// Create kiroCodex-settings.json in .codex directory
+	// Create specCodex-settings.json in .codex directory
 	const codexSettingsFile = vscode.Uri.joinPath(
 		codexSettingsDir,
 		CONFIG_FILE_NAME,
@@ -297,10 +297,10 @@ function registerCommands(
 	);
 
 	const createSpecCommand = vscode.commands.registerCommand(
-		"kiroCodex.spec.create",
+		"specCodex.spec.create",
 		async () => {
 			outputChannel.appendLine(
-				"\n=== COMMAND kiroCodex.spec.create TRIGGERED ===",
+				"\n=== COMMAND specCodex.spec.create TRIGGERED ===",
 			);
 			outputChannel.appendLine(`Time: ${new Date().toLocaleTimeString()}`);
 			try {
@@ -320,28 +320,28 @@ function registerCommands(
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
-			"kiroCodex.spec.navigate.requirements",
+			"specCodex.spec.navigate.requirements",
 			async (specName: string) => {
 				await specManager.navigateToDocument(specName, "requirements");
 			},
 		),
 
 		vscode.commands.registerCommand(
-			"kiroCodex.spec.navigate.design",
+			"specCodex.spec.navigate.design",
 			async (specName: string) => {
 				await specManager.navigateToDocument(specName, "design");
 			},
 		),
 
 		vscode.commands.registerCommand(
-			"kiroCodex.spec.navigate.tasks",
+			"specCodex.spec.navigate.tasks",
 			async (specName: string) => {
 				await specManager.navigateToDocument(specName, "tasks");
 			},
 		),
 
 		vscode.commands.registerCommand(
-			"kiroCodex.spec.implTask",
+			"specCodex.spec.implTask",
 			async (
 				documentUri: vscode.Uri,
 				lineNumber: number,
@@ -369,7 +369,7 @@ function registerCommands(
 				await specManager.implTask(documentUri.fsPath, taskDescription);
 			},
 		),
-		vscode.commands.registerCommand("kiroCodex.spec.refresh", async () => {
+		vscode.commands.registerCommand("specCodex.spec.refresh", async () => {
 			outputChannel.appendLine("[Manual Refresh] Refreshing spec explorer...");
 			specExplorer.refresh();
 		}),
@@ -379,19 +379,19 @@ function registerCommands(
 
 	// Steering commands
 	context.subscriptions.push(
-		vscode.commands.registerCommand("kiroCodex.steering.create", async () => {
+		vscode.commands.registerCommand("specCodex.steering.create", async () => {
 			await steeringManager.createCustom();
 		}),
 
 		vscode.commands.registerCommand(
-			"kiroCodex.steering.generateInitial",
+			"specCodex.steering.generateInitial",
 			async () => {
 				await steeringManager.init();
 			},
 		),
 
 		vscode.commands.registerCommand(
-			"kiroCodex.steering.refine",
+			"specCodex.steering.refine",
 			async (item: any) => {
 				// Item is always from tree view
 				const uri = vscode.Uri.file(item.resourcePath);
@@ -400,7 +400,7 @@ function registerCommands(
 		),
 
 		vscode.commands.registerCommand(
-			"kiroCodex.steering.delete",
+			"specCodex.steering.delete",
 			async (item: any) => {
 				outputChannel.appendLine(`[Steering] Deleting: ${item.label}`);
 
@@ -418,20 +418,20 @@ function registerCommands(
 
 		// Configuration commands
 		vscode.commands.registerCommand(
-			"kiroCodex.steering.createUserRule",
+			"specCodex.steering.createUserRule",
 			async () => {
 				await steeringManager.createUserConfiguration();
 			},
 		),
 
 		vscode.commands.registerCommand(
-			"kiroCodex.steering.createProjectRule",
+			"specCodex.steering.createProjectRule",
 			async () => {
 				await steeringManager.createProjectDocumentation();
 			},
 		),
 
-		vscode.commands.registerCommand("kiroCodex.steering.refresh", async () => {
+		vscode.commands.registerCommand("specCodex.steering.refresh", async () => {
 			outputChannel.appendLine(
 				"[Manual Refresh] Refreshing steering explorer...",
 			);
@@ -466,7 +466,7 @@ function registerCommands(
 	// Spec delete command
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
-			"kiroCodex.spec.delete",
+			"specCodex.spec.delete",
 			async (item: any) => {
 				await specManager.delete(item.label);
 			},
@@ -478,13 +478,13 @@ function registerCommands(
 
 	// Prompts commands
 	context.subscriptions.push(
-		vscode.commands.registerCommand("kiroCodex.prompts.refresh", async () => {
+		vscode.commands.registerCommand("specCodex.prompts.refresh", async () => {
 			outputChannel.appendLine(
 				"[Manual Refresh] Refreshing prompts explorer...",
 			);
 			promptsExplorer.refresh();
 		}),
-		vscode.commands.registerCommand("kiroCodex.prompts.create", async () => {
+		vscode.commands.registerCommand("specCodex.prompts.create", async () => {
 			const ws = vscode.workspace.workspaceFolders?.[0];
 			if (!ws) {
 				vscode.window.showErrorMessage("No workspace folder found");
@@ -513,7 +513,7 @@ function registerCommands(
 			}
 		}),
 		vscode.commands.registerCommand(
-			"kiroCodex.prompts.run",
+			"specCodex.prompts.run",
 			async (filePathOrItem?: any) => {
 				try {
 					let target: string | undefined;
@@ -555,14 +555,14 @@ function registerCommands(
 
 	// Group the following commands in a single subscriptions push
 	context.subscriptions.push(
-		vscode.commands.registerCommand("kiroCodex.checkForUpdates", async () => {
+		vscode.commands.registerCommand("specCodex.checkForUpdates", async () => {
 			outputChannel.appendLine("Manual update check requested");
 			await updateChecker.checkForUpdates(true); // Force check
 		}),
 
 		// Overview and settings commands
-		vscode.commands.registerCommand("kiroCodex.settings.open", async () => {
-			outputChannel.appendLine("Opening Kiro settings...");
+		vscode.commands.registerCommand("specCodex.settings.open", async () => {
+			outputChannel.appendLine("Opening Spec for Codex settings...");
 
 			const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
 			if (!workspaceFolder) {
@@ -581,7 +581,7 @@ function registerCommands(
 				// Directory might already exist
 			}
 
-			// Create or open kiroCodex-settings.json
+			// Create or open specCodex-settings.json
 			const settingsFile = vscode.Uri.joinPath(settingsDir, CONFIG_FILE_NAME);
 
 			try {
@@ -603,20 +603,20 @@ function registerCommands(
 			await vscode.window.showTextDocument(document);
 		}),
 
-		vscode.commands.registerCommand("kiroCodex.help.open", async () => {
-			outputChannel.appendLine("Opening Kiro help...");
-			const helpUrl = "https://github.com/atman-33/kiro-for-codex#readme";
+		vscode.commands.registerCommand("specCodex.help.open", async () => {
+			outputChannel.appendLine("Opening Spec for Codex help...");
+			const helpUrl = "https://github.com/atman-33/spec-for-codex#readme";
 			vscode.env.openExternal(vscode.Uri.parse(helpUrl));
 		}),
 
-		vscode.commands.registerCommand("kiroCodex.menu.open", async () => {
-			outputChannel.appendLine("Opening Kiro menu...");
+		vscode.commands.registerCommand("specCodex.menu.open", async () => {
+			outputChannel.appendLine("Opening Spec for Codex menu...");
 			await toggleViews();
 		}),
 
 		// Codex availability check command
 		vscode.commands.registerCommand(
-			"kiroCodex.codex.checkAvailability",
+			"specCodex.codex.checkAvailability",
 			async () => {
 				const availabilityResult =
 					await codexProvider.getCodexAvailabilityStatus();
@@ -687,12 +687,12 @@ function setupFileWatchers(
 
 	context.subscriptions.push(codexWatcher);
 
-	// Watch for changes in workspace Codex settings (.codex/settings/kiroCodex-settings.json)
+	// Watch for changes in workspace Codex settings (.codex/settings/specCodex-settings.json)
 	const wsFolder = vscode.workspace.workspaceFolders?.[0];
 	if (wsFolder) {
 		const settingsPattern = new vscode.RelativePattern(
 			wsFolder,
-			".codex/settings/kiroCodex-settings.json",
+			".codex/settings/specCodex-settings.json",
 		);
 		const codexSettingsWatcher =
 			vscode.workspace.createFileSystemWatcher(settingsPattern);

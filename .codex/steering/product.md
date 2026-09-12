@@ -1,6 +1,6 @@
 # Product Steering
 
-Use this guide to keep the VS Code extension "Kiro for Codex" aligned with its purpose and workflow.
+Use this guide to keep the VS Code extension "Spec for Codex" aligned with its purpose and workflow.
 
 ## Purpose & Value
 - Provide a spec‑driven development workflow powered by Codex CLI inside VS Code.
@@ -9,13 +9,13 @@ Use this guide to keep the VS Code extension "Kiro for Codex" aligned with its p
 
 ## Core Features (enforce in code/UX)
 - Spec Workflow: Requirements → Design → Tasks with explicit approvals.
-  - Navigate via commands `kiroCodex.spec.navigate.*` and CodeLens on `tasks.md`.
+  - Navigate via commands `specCodex.spec.navigate.*` and CodeLens on `tasks.md`.
   - New: "Create New Spec" opens a focused editor (webview) to capture the initial request before generation.
 - Steering Docs: generate and edit guidance under `.codex/steering/`.
 - Prompts: scaffold and run `.codex/prompts/<name>.md` in a split terminal with Codex CLI.
 - Chat: a dedicated sidebar webview to start/continue conversations with Codex.
   - Supports single‑shot runs and streaming via the Codex terminal session.
-- Settings bootstrap: create `.codex/settings/kiroCodex-settings.json` with defaults on first run.
+- Settings bootstrap: create `.codex/settings/specCodex-settings.json` with defaults on first run.
 - Codex availability checks and setup guidance if missing or incompatible.
 - Codex executions (spec creation, steering generation, prompts, chat) funnel through `CodexProvider.executePlan`, ensuring large prompts stream via STDIN and succeed on Windows PowerShell as well as POSIX shells.
 
@@ -33,10 +33,10 @@ Use this guide to keep the VS Code extension "Kiro for Codex" aligned with its p
 - Require Codex CLI readiness before actions that invoke it; surface `showSetupGuidance` on failure (`src/providers/codex-provider.ts`).
 - Use `CodexProvider.executePlan` for every feature flow; do not call `invokeCodexSplitView`/`invokeCodexHeadless` directly from managers.
 - Keep the Spec order: generate Requirements → approval → Design → approval → Tasks. In navigation, show placeholder docs with guidance if files are absent (`SpecManager.navigateToDocument`).
-- Write task completion as Markdown checkbox replacement `- [ ]` → `- [x]` when executing a task (`kiroCodex.spec.implTask`).
+- Write task completion as Markdown checkbox replacement `- [ ]` → `- [x]` when executing a task (`specCodex.spec.implTask`).
 - Maintain `.codex` watcher‑based auto‑refresh of tree views; avoid long‑running synchronous work on the extension host thread.
 
 ## Examples
 - Spec base path resolution: `SpecManager.getSpecBasePath()` returns `.codex/specs` by default.
-- Steering generation entry: `kiroCodex.steering.generateInitial` uses `src/prompts/target/steering/init-steering.ts` through `PromptLoader`.
+- Steering generation entry: `specCodex.steering.generateInitial` uses `src/prompts/target/steering/init-steering.ts` through `PromptLoader`.
 - Packaging is extension‑first; the extension bundle is built with esbuild, webview assets with Vite, then packaged with `vsce`. CLIs are invoked via terminal using `CommandBuilder`.

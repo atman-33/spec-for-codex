@@ -553,7 +553,7 @@ export class CodexProvider {
 	 */
 	async invokeCodexSplitView(
 		prompt: string,
-		title: string = "Kiro for Codex",
+		title: string = "Spec for Codex",
 		options?: CodexOptions,
 	): Promise<vscode.Terminal> {
 		return await this.retryService.executeWithRetry(

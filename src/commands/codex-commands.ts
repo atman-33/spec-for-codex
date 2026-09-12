@@ -21,13 +21,13 @@ export class CodexCommands {
 		const commands = new CodexCommands(codexProvider);
 
 		const disposables = [
-			vscode.commands.registerCommand("kiro.checkCodexAvailability", () =>
+			vscode.commands.registerCommand("specCodex.checkCodexAvailability", () =>
 				commands.checkCodexAvailability(),
 			),
-			vscode.commands.registerCommand("kiro.showCodexSetupGuide", () =>
+			vscode.commands.registerCommand("specCodex.showCodexSetupGuide", () =>
 				commands.showCodexSetupGuide(),
 			),
-			vscode.commands.registerCommand("kiro.testCodexConnection", () =>
+			vscode.commands.registerCommand("specCodex.testCodexConnection", () =>
 				commands.testCodexConnection(),
 			),
 		];
@@ -74,7 +74,7 @@ export class CodexCommands {
 								if (action === "Show Configuration") {
 									vscode.commands.executeCommand(
 										"workbench.action.openSettings",
-										"kiro.codex",
+										"specCodex.codex",
 									);
 								}
 							});
@@ -171,7 +171,7 @@ export class CodexCommands {
 									case "View Configuration":
 										vscode.commands.executeCommand(
 											"workbench.action.openSettings",
-											"kiro.codex",
+											"specCodex.codex",
 										);
 										break;
 									case "Run Sample Command":
@@ -203,7 +203,7 @@ export class CodexCommands {
 						case "Check Configuration":
 							vscode.commands.executeCommand(
 								"workbench.action.openSettings",
-								"kiro.codex",
+								"specCodex.codex",
 							);
 							break;
 					}

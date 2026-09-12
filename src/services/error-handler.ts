@@ -816,14 +816,14 @@ export class CodexErrorHandler {
 	private async openTimeoutSettings(): Promise<void> {
 		await vscode.commands.executeCommand(
 			"workbench.action.openSettings",
-			"kiro.codex.timeout",
+			"specCodex.codex.timeout",
 		);
 	}
 
 	private async openApiKeySettings(): Promise<void> {
 		await vscode.commands.executeCommand(
 			"workbench.action.openSettings",
-			"kiro.codex.apiKey",
+			"specCodex.codex.apiKey",
 		);
 	}
 
@@ -845,7 +845,7 @@ export class CodexErrorHandler {
 	private async openCodexSettings(): Promise<void> {
 		await vscode.commands.executeCommand(
 			"workbench.action.openSettings",
-			"kiro.codex",
+			"specCodex.codex",
 		);
 	}
 
@@ -857,7 +857,7 @@ export class CodexErrorHandler {
 		);
 
 		if (result === "Yes") {
-			const config = vscode.workspace.getConfiguration("kiro.codex");
+			const config = vscode.workspace.getConfiguration("specCodex.codex");
 			await config.update("path", undefined, vscode.ConfigurationTarget.Global);
 			await config.update(
 				"defaultApprovalMode",
@@ -902,7 +902,7 @@ export class CodexErrorHandler {
 			].join("\n"),
 		);
 
-		const issueUrl = `https://github.com/kiro-extension/kiro/issues/new?body=${issueBody}`;
+		const issueUrl = `https://github.com/atman-33/spec-for-codex/issues/new?body=${issueBody}`;
 		await vscode.env.openExternal(vscode.Uri.parse(issueUrl));
 	}
 }

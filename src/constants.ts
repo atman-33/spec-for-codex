@@ -1,8 +1,8 @@
 // VSCode configuration namespace for this extension
-export const VSC_CONFIG_NAMESPACE = "kiroCodex";
+export const VSC_CONFIG_NAMESPACE = "specCodex";
 
 // File names
-export const CONFIG_FILE_NAME = "kiroCodex-settings.json";
+export const CONFIG_FILE_NAME = "specCodex-settings.json";
 
 // Default configuration
 export const DEFAULT_CONFIG = {

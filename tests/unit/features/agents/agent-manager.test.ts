@@ -148,7 +148,7 @@ describe("AgentManager", () => {
 				mockWorkspaceRoot,
 				".codex",
 				"agents",
-				"kiroCodex",
+				"specCodex",
 			);
 
 			// Mock stat to throw (file doesn't exist)
@@ -344,7 +344,7 @@ description: No tools
 			const expectedNeedle = path.join(
 				".codex",
 				"agents",
-				"kiroCodex",
+				"specCodex",
 				"test-agent.md",
 			);
 			(fs.existsSync as Mocked<any>).mockImplementation((p: string) => {
@@ -359,7 +359,7 @@ description: No tools
 				mockWorkspaceRoot,
 				".codex",
 				"agents",
-				"kiroCodex",
+				"specCodex",
 				"test-agent.md",
 			);
 			expect(agentPath).toBe(expectedFull);
@@ -378,7 +378,7 @@ description: No tools
 
 		test("Check agent existence", () => {
 			// Arrange
-			const expectedExisting = path.join("kiroCodex", "existing-agent.md");
+			const expectedExisting = path.join("specCodex", "existing-agent.md");
 			(fs.existsSync as Mocked<any>).mockImplementation((p: string) => {
 				// Only return true for paths that contain 'existing-agent.md' (normalized)
 				return path.normalize(p).includes(path.normalize(expectedExisting));

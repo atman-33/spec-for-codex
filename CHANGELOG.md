@@ -1,6 +1,14 @@
-# 📦 Changelog for Kiro for Codex
+# 📦 Changelog for Spec for Codex
 
 All notable changes to this project will be documented in this file.
+
+---
+
+## Unreleased
+
+### Changed
+
+- Rename the project from "Kiro for Codex" to "Spec for Codex" to comply with Amazon's trademark request: product name, command IDs, settings namespace, and icons. "Kiro" is now used only to describe compatibility.
 
 ---
 
