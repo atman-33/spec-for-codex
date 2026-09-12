@@ -1,18 +1,20 @@
-﻿# Kiro for Codex
+﻿# Spec for Codex
 
-[![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/v/atman-dev.kiro-for-codex.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=atman-dev.kiro-for-codex)
-[![Downloads](https://img.shields.io/vscode-marketplace/d/atman-dev.kiro-for-codex.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=atman-dev.kiro-for-codex)
-[![GitHub stars](https://img.shields.io/github/stars/atman-33/kiro-for-codex.svg?style=flat-square)](https://github.com/atman-33/kiro-for-codex/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/atman-33/kiro-for-codex.svg?style=flat-square)](https://github.com/atman-33/kiro-for-codex/issues)
+[![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/v/atman-dev.spec-for-codex.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=atman-dev.spec-for-codex)
+[![Downloads](https://img.shields.io/vscode-marketplace/d/atman-dev.spec-for-codex.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=atman-dev.spec-for-codex)
+[![GitHub stars](https://img.shields.io/github/stars/atman-33/spec-for-codex.svg?style=flat-square)](https://github.com/atman-33/spec-for-codex/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/atman-33/spec-for-codex.svg?style=flat-square)](https://github.com/atman-33/spec-for-codex/issues)
 
 A VS Code extension that brings spec-driven development to Codex CLI. Manage your specs, steering documents, and custom prompts visually while leveraging Codex CLI's powerful AI capabilities.
+
+> **Not affiliated with Amazon, AWS, or OpenAI.** Spec for Codex is an independent project. It is compatible with Kiro but is not sponsored by, affiliated with, or endorsed by Amazon.com, Inc. or Amazon Web Services, Inc. "Kiro" is a trademark of Amazon Technologies, Inc.; it is used here only to describe compatibility. "Codex" and "OpenAI" are trademarks of OpenAI. All other trademarks belong to their respective owners.
 
 ---
 
 💡 **Announcement**:  
-In the original **kiro-for-codex**, interacting with Codex required sending prompts through the terminal, which unfortunately reduced usability. To address this, I’ve been developing [**kiro-for-codex-ide**](https://github.com/atman-33/kiro-for-codex-ide), which passes the necessary prompts (such as those for spec creation) directly into the context of [Codex - OpenAI’s coding agent](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt).
+In the original **spec-for-codex**, interacting with Codex required sending prompts through the terminal, which unfortunately reduced usability. To address this, I’ve been developing [**spec-for-codex-ide**](https://github.com/atman-33/spec-for-codex-ide), which passes the necessary prompts (such as those for spec creation) directly into the context of [Codex - OpenAI’s coding agent](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt).
 
-This approach makes working with Codex much smoother, so moving forward I plan to focus development on **kiro-for-codex-ide** as the main project.
+This approach makes working with Codex much smoother, so moving forward I plan to focus development on **spec-for-codex-ide** as the main project.
 
 ---
 
@@ -20,7 +22,7 @@ This approach makes working with Codex much smoother, so moving forward I plan t
 
 ### ⚙️ Configuration
 
-- **Approval Modes**: The `kiroCodex.codex.defaultApprovalMode` setting now supports two modes:
+- **Approval Modes**: The `specCodex.codex.defaultApprovalMode` setting now supports two modes:
   - `full-auto`: (Default) Executes non-destructive commands automatically and asks for approval on failure.
   - `yolo`: Executes all commands without approval. Use with caution.
 
@@ -58,7 +60,7 @@ This approach makes working with Codex much smoother, so moving forward I plan t
 
 ## Screenshot
 
-![Kiro for Codex Extension](./screenshots/image.png)
+![Spec for Codex Extension](./screenshots/image.png)
 
 The extension provides an organized sidebar for OVERVIEW, SPEC, STEERING, PROMPTS, and CHAT. Other views are hidden in this build.
 
@@ -84,13 +86,13 @@ VS Code users:
 
 1. Open VS Code
 2. Go to Extensions (Cmd/Ctrl+Shift+X)
-3. Search for "Kiro for Codex"
+3. Search for "Spec for Codex"
 4. Click Install
 
 Or via command line:
 
 ```bash
-code --install-extension atman-33.kiro-for-codex
+code --install-extension atman-33.spec-for-codex
 ```
 
 ### From VSIX file
@@ -99,7 +101,7 @@ Download the latest `.vsix` from GitHub Releases, then:
 
 ```bash
 # VS Code
-code --install-extension kiro-for-codex-{latest-version}.vsix
+code --install-extension spec-for-codex-{latest-version}.vsix
 ```
 
 Replace `{latest-version}` with the actual version number, e.g., `0.2.4`.
@@ -109,7 +111,7 @@ Replace `{latest-version}` with the actual version number, e.g., `0.2.4`.
 ### Creating a Spec
 
 Recommended flow:
-1. Click the Kiro for Codex icon in the activity bar
+1. Click the Spec for Codex icon in the activity bar
 2. In the SPEC view, click `+ Create New Spec`
 3. A webview editor opens; describe your feature/request
 4. The extension generates the requirements document with Codex CLI
@@ -147,7 +149,7 @@ Create and run project prompts:
 
 Use the Chat view to quickly iterate with Codex:
 
-1. Open the Chat view under the Kiro activity container
+1. Open the Chat view under the Spec for Codex activity container
 2. Type a message and choose run mode (send once or stream)
 3. For streaming, the conversation continues in a dedicated Codex terminal session
 4. Use Stop to end the active session
@@ -160,24 +162,24 @@ The Overview view provides quick access to settings, availability checks, and he
 
 Core commands registered by the extension:
 
-- `kiroCodex.spec.create`: Create a new spec (requirements -> design -> tasks)
-- `kiroCodex.spec.createWithAgents`: Disabled in this build
-- `kiroCodex.spec.navigate.requirements` / `kiroCodex.spec.navigate.design` / `kiroCodex.spec.navigate.tasks`: Open spec documents
-- `kiroCodex.spec.implTask`: Run an individual task from `tasks.md`
-- `kiroCodex.spec.refresh`: Refresh the SPEC explorer
-- `kiroCodex.steering.create`: Create a custom steering document
-- `kiroCodex.steering.generateInitial`: Analyze the project and generate initial steering docs
-- `kiroCodex.steering.refine`: Refine an existing steering document
-- `kiroCodex.steering.delete`: Delete a steering document and update docs
-- `kiroCodex.prompts.create` / `kiroCodex.prompts.run` / `kiroCodex.prompts.refresh`: Manage and run prompts
-- `kiroCodex.settings.open`: Open workspace settings file `.codex/settings/kiroCodex-settings.json`
-- `kiroCodex.menu.open`: Toggle visibility of views (Specs / Steering; others when enabled)
-- `kiroCodex.codex.checkAvailability`: Check Codex CLI availability and version
-- `kiroCodex.checkForUpdates`: Manually trigger the extension update checker
+- `specCodex.spec.create`: Create a new spec (requirements -> design -> tasks)
+- `specCodex.spec.createWithAgents`: Disabled in this build
+- `specCodex.spec.navigate.requirements` / `specCodex.spec.navigate.design` / `specCodex.spec.navigate.tasks`: Open spec documents
+- `specCodex.spec.implTask`: Run an individual task from `tasks.md`
+- `specCodex.spec.refresh`: Refresh the SPEC explorer
+- `specCodex.steering.create`: Create a custom steering document
+- `specCodex.steering.generateInitial`: Analyze the project and generate initial steering docs
+- `specCodex.steering.refine`: Refine an existing steering document
+- `specCodex.steering.delete`: Delete a steering document and update docs
+- `specCodex.prompts.create` / `specCodex.prompts.run` / `specCodex.prompts.refresh`: Manage and run prompts
+- `specCodex.settings.open`: Open workspace settings file `.codex/settings/specCodex-settings.json`
+- `specCodex.menu.open`: Toggle visibility of views (Specs / Steering; others when enabled)
+- `specCodex.codex.checkAvailability`: Check Codex CLI availability and version
+- `specCodex.checkForUpdates`: Manually trigger the extension update checker
 
 ## Configuration
 
-Project-local settings are stored in `.codex/settings/kiroCodex-settings.json` and only contain paths. UI visibility and Codex runtime options live in VS Code settings under the `kiroCodex.*` namespace.
+Project-local settings are stored in `.codex/settings/specCodex-settings.json` and only contain paths. UI visibility and Codex runtime options live in VS Code settings under the `specCodex.*` namespace.
 
 Minimal settings file:
 
@@ -192,11 +194,11 @@ Minimal settings file:
 
 Notes:
 - Only the `paths.*` values are honored by the extension at runtime.
-- These path values are no longer exposed in VS Code's Settings UI; update `.codex/settings/kiroCodex-settings.json` directly if you need to customize them.
+- These path values are no longer exposed in VS Code's Settings UI; update `.codex/settings/specCodex-settings.json` directly if you need to customize them.
 - Changing `paths.*` may require a window reload to take effect.
-- The settings file itself always lives at `.codex/settings/kiroCodex-settings.json`; the directory cannot be relocated.
+- The settings file itself always lives at `.codex/settings/specCodex-settings.json`; the directory cannot be relocated.
 - Prompts are always stored under `.codex/prompts`; this location is not configurable.
-- On Windows, override the terminal used for Codex runs by setting `kiroCodex.codex.windowsShellPath` in VS Code settings (leave blank to inherit the default).
+- On Windows, override the terminal used for Codex runs by setting `specCodex.codex.windowsShellPath` in VS Code settings (leave blank to inherit the default).
 
 ## Workspace Structure
 
@@ -216,7 +218,7 @@ steering/                    # AI guidance documents
   tech.md                    # Technical standards
   structure.md               # Code organization
 settings/
-  kiroCodex-settings.json          # Extension settings
+  specCodex-settings.json          # Extension settings
 ```
 
 ## Development
@@ -231,8 +233,8 @@ settings/
 
 ```bash
 # Clone the repository
-git clone https://github.com/atman-33/kiro-for-codex.git
-cd kiro-for-codex
+git clone https://github.com/atman-33/spec-for-codex.git
+cd spec-for-codex
 
 # Install dependencies
 npm install
@@ -256,7 +258,7 @@ npm run watch
 # Build VSIX package
 npm run package
 
-# Output: kiro-for-codex-{latest-version}.vsix
+# Output: spec-for-codex-{latest-version}.vsix
 ```
 
 Build details:
@@ -289,7 +291,7 @@ dist/webview/app               # Built webview assets consumed by providers
 
 - PowerShell is recommended on Windows (direct Codex CLI support)
 - WSL is supported with conditional path conversion
-- Need a different Windows terminal? Set `kiroCodex.codex.windowsShellPath` to the shell executable you prefer (leave empty to inherit VS Code's default).
+- Need a different Windows terminal? Set `specCodex.codex.windowsShellPath` to the shell executable you prefer (leave empty to inherit VS Code's default).
 
 ## License
 
@@ -297,6 +299,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Inspiration
 
-Kiro for Codex was inspired by the excellent "Kiro for CC" project for Claude Code by @notdp. This extension started as a port/adaptation from Claude Code's Kiro to a Codex CLI–focused workflow, carrying over the spec-driven development experience and UI while integrating tightly with Codex CLI.
+Spec for Codex was inspired by the excellent "Kiro for CC" project for Claude Code by @notdp. This extension started as a port/adaptation from Claude Code's Kiro to a Codex CLI–focused workflow, carrying over the spec-driven development experience and UI while integrating tightly with Codex CLI.
 
 - Original project: https://github.com/notdp/kiro-for-cc

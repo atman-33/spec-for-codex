@@ -1,14 +1,14 @@
 {
-  "name": "kiro-for-codex",
-  "displayName": "Kiro for Codex",
-  "description": "Spec-driven development with Codex CLI - inspired by Kiro",
+  "name": "spec-for-codex",
+  "displayName": "Spec for Codex",
+  "description": "Spec-driven development with Codex CLI - compatible with Kiro. Not affiliated with Amazon or AWS.",
   "version": "0.7.1",
   "author": "atman-33",
   "publisher": "atman-dev",
   "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/atman-33/kiro-for-codex"
+    "url": "https://github.com/atman-33/spec-for-codex"
   },
   "engines": {
     "vscode": "^1.84.0"
@@ -51,34 +51,34 @@
   },
   "contributes": {
     "configuration": {
-      "title": "Kiro for Codex",
+      "title": "Spec for Codex",
       "properties": {
-        "kiroCodex.views.specs.visible": {
+        "specCodex.views.specs.visible": {
           "type": "boolean",
           "default": true,
-          "description": "Show Specs view in the Kiro activity container"
+          "description": "Show Specs view in the Spec for Codex activity container"
         },
-        "kiroCodex.views.steering.visible": {
+        "specCodex.views.steering.visible": {
           "type": "boolean",
           "default": true,
-          "description": "Show Steering view in the Kiro activity container"
+          "description": "Show Steering view in the Spec for Codex activity container"
         },
-        "kiroCodex.views.prompts.visible": {
+        "specCodex.views.prompts.visible": {
           "type": "boolean",
           "default": true,
-          "description": "Show Prompts view in the Kiro activity container"
+          "description": "Show Prompts view in the Spec for Codex activity container"
         },
-        "kiroCodex.views.settings.visible": {
+        "specCodex.views.settings.visible": {
           "type": "boolean",
           "default": true,
-          "description": "Show Settings view in the Kiro activity container"
+          "description": "Show Settings view in the Spec for Codex activity container"
         },
-        "kiroCodex.codex.path": {
+        "specCodex.codex.path": {
           "type": "string",
           "default": "codex",
           "description": "Codex CLI executable name or path"
         },
-        "kiroCodex.codex.defaultApprovalMode": {
+        "specCodex.codex.defaultApprovalMode": {
           "type": "string",
           "enum": [
             "full-auto",
@@ -87,22 +87,22 @@
           "default": "full-auto",
           "description": "Default approval mode when invoking Codex CLI"
         },
-        "kiroCodex.codex.defaultModel": {
+        "specCodex.codex.defaultModel": {
           "type": "string",
           "default": "gpt-5-codex",
           "description": "Default model identifier for Codex CLI"
         },
-        "kiroCodex.codex.timeout": {
+        "specCodex.codex.timeout": {
           "type": "number",
           "default": 30000,
           "description": "Command timeout in milliseconds for Codex CLI"
         },
-        "kiroCodex.codex.terminalDelay": {
+        "specCodex.codex.terminalDelay": {
           "type": "number",
           "default": 1000,
           "description": "Delay in milliseconds before writing to terminal to improve UX"
         },
-        "kiroCodex.codex.windowsShellPath": {
+        "specCodex.codex.windowsShellPath": {
           "type": "string",
           "default": "",
           "description": "Windows only: shell executable to launch when running Codex commands. Leave empty to inherit the VS Code default terminal."
@@ -112,251 +112,251 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "kiroCodex",
-          "title": "Kiro for Codex",
-          "icon": "./icons/kiro.svg"
+          "id": "specCodex",
+          "title": "Spec for Codex",
+          "icon": "./icons/specCodex.svg"
         }
       ]
     },
     "views": {
-      "kiroCodex": [
+      "specCodex": [
         {
-          "id": "kiroCodex.views.specExplorer",
+          "id": "specCodex.views.specExplorer",
           "name": "Specs",
           "icon": "symbol-structure",
-          "when": "!(workbenchState == empty || workspaceFolderCount == 0) && config.kiroCodex.views.specs.visible"
+          "when": "!(workbenchState == empty || workspaceFolderCount == 0) && config.specCodex.views.specs.visible"
         },
         {
-          "id": "kiroCodex.views.steeringExplorer",
+          "id": "specCodex.views.steeringExplorer",
           "name": "Steering",
           "icon": "symbol-parameter",
-          "when": "!(workbenchState == empty || workspaceFolderCount == 0) && config.kiroCodex.views.steering.visible"
+          "when": "!(workbenchState == empty || workspaceFolderCount == 0) && config.specCodex.views.steering.visible"
         },
         {
-          "id": "kiroCodex.views.promptsExplorer",
+          "id": "specCodex.views.promptsExplorer",
           "name": "Prompts",
           "icon": "terminal",
-          "when": "!(workbenchState == empty || workspaceFolderCount == 0) && config.kiroCodex.views.prompts.visible"
+          "when": "!(workbenchState == empty || workspaceFolderCount == 0) && config.specCodex.views.prompts.visible"
         },
         {
-          "id": "kiroCodex.views.overview",
+          "id": "specCodex.views.overview",
           "name": "Settings",
           "icon": "gear",
           "visibility": "collapsed",
-          "when": "!(workbenchState == empty || workspaceFolderCount == 0) && config.kiroCodex.views.settings.visible"
+          "when": "!(workbenchState == empty || workspaceFolderCount == 0) && config.specCodex.views.settings.visible"
         }
       ]
     },
     "viewsWelcome": [
       {
-        "view": "kiroCodex.views.specExplorer",
-        "contents": "Plan features with Specs\n\n[$(plus) Create New Spec](command:kiroCodex.spec.create)"
+        "view": "specCodex.views.specExplorer",
+        "contents": "Plan features with Specs\n\n[$(plus) Create New Spec](command:specCodex.spec.create)"
       },
       {
-        "view": "kiroCodex.views.promptsExplorer",
-        "contents": "Create and run prompts (.md) under .codex/prompts\n\n[$(plus) Create Prompt](command:kiroCodex.prompts.create)\n[$(refresh) Refresh](command:kiroCodex.prompts.refresh)"
+        "view": "specCodex.views.promptsExplorer",
+        "contents": "Create and run prompts (.md) under .codex/prompts\n\n[$(plus) Create Prompt](command:specCodex.prompts.create)\n[$(refresh) Refresh](command:specCodex.prompts.refresh)"
       },
       {
-        "view": "kiroCodex.views.overview",
-        "contents": "Configure Kiro for Codex\n\n[$(gear) Open Settings](command:kiroCodex.settings.open)\n[$(question) Help](command:kiroCodex.help.open)"
+        "view": "specCodex.views.overview",
+        "contents": "Configure Spec for Codex\n\n[$(gear) Open Settings](command:specCodex.settings.open)\n[$(question) Help](command:specCodex.help.open)"
       },
       {
-        "view": "kiroCodex.views.specExplorer",
-        "contents": "Build complex features with structured planning\n\n[$(plus) Create New Spec](command:kiroCodex.spec.create)"
+        "view": "specCodex.views.specExplorer",
+        "contents": "Build complex features with structured planning\n\n[$(plus) Create New Spec](command:specCodex.spec.create)"
       },
       {
-        "view": "kiroCodex.views.steeringExplorer",
-        "contents": "[$(globe) Create User Rule](command:kiroCodex.steering.createUserRule)\n\n[$(root-folder) Create Project Rule](command:kiroCodex.steering.createProjectRule)"
+        "view": "specCodex.views.steeringExplorer",
+        "contents": "[$(globe) Create User Rule](command:specCodex.steering.createUserRule)\n\n[$(root-folder) Create Project Rule](command:specCodex.steering.createProjectRule)"
       }
     ],
     "commands": [
       {
-        "command": "kiroCodex.prompts.create",
+        "command": "specCodex.prompts.create",
         "title": "Create Prompt",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(plus)"
       },
       {
-        "command": "kiroCodex.prompts.refresh",
+        "command": "specCodex.prompts.refresh",
         "title": "Refresh Prompts",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(refresh)"
       },
       {
-        "command": "kiroCodex.prompts.run",
+        "command": "specCodex.prompts.run",
         "title": "Run Prompt",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(play)"
       },
       {
-        "command": "kiroCodex.spec.create",
+        "command": "specCodex.spec.create",
         "title": "Create New Spec",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(plus)"
       },
       {
-        "command": "kiroCodex.steering.create",
+        "command": "specCodex.steering.create",
         "title": "Create Custom Steering",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(plus)"
       },
       {
-        "command": "kiroCodex.steering.generateInitial",
+        "command": "specCodex.steering.generateInitial",
         "title": "Init Steering",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(sparkle)"
       },
       {
-        "command": "kiroCodex.steering.refine",
+        "command": "specCodex.steering.refine",
         "title": "Refine Steering",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(sparkle)"
       },
       {
-        "command": "kiroCodex.spec.delete",
+        "command": "specCodex.spec.delete",
         "title": "Delete Spec",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(trash)"
       },
       {
-        "command": "kiroCodex.steering.delete",
+        "command": "specCodex.steering.delete",
         "title": "Delete Steering",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(trash)"
       },
       {
-        "command": "kiroCodex.steering.createUserRule",
+        "command": "specCodex.steering.createUserRule",
         "title": "Create User Rule",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(globe)"
       },
       {
-        "command": "kiroCodex.steering.createProjectRule",
+        "command": "specCodex.steering.createProjectRule",
         "title": "Create Project Rule",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(root-folder)"
       },
       {
-        "command": "kiroCodex.settings.open",
-        "title": "Kiro Settings",
-        "category": "Kiro for Codex",
+        "command": "specCodex.settings.open",
+        "title": "Spec for Codex Settings",
+        "category": "Spec for Codex",
         "icon": "$(gear)"
       },
       {
-        "command": "kiroCodex.checkForUpdates",
+        "command": "specCodex.checkForUpdates",
         "title": "Check for Updates",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(sync)"
       },
       {
-        "command": "kiroCodex.spec.refresh",
+        "command": "specCodex.spec.refresh",
         "title": "Refresh Specs",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(refresh)"
       },
       {
-        "command": "kiroCodex.steering.refresh",
+        "command": "specCodex.steering.refresh",
         "title": "Refresh Steering",
-        "category": "Kiro for Codex",
+        "category": "Spec for Codex",
         "icon": "$(refresh)"
       },
       {
-        "command": "kiroCodex.help.open",
-        "title": "Kiro Help",
-        "category": "Kiro for Codex",
+        "command": "specCodex.help.open",
+        "title": "Spec for Codex Help",
+        "category": "Spec for Codex",
         "icon": "$(question)"
       },
       {
-        "command": "kiroCodex.menu.open",
-        "title": "Kiro Menu",
-        "category": "Kiro for Codex",
+        "command": "specCodex.menu.open",
+        "title": "Spec for Codex Menu",
+        "category": "Spec for Codex",
         "icon": "$(ellipsis)"
       },
       {
-        "command": "kiroCodex.spec.implTask",
+        "command": "specCodex.spec.implTask",
         "title": "Implement Task",
-        "category": "Kiro for Codex"
+        "category": "Spec for Codex"
       }
     ],
     "menus": {
       "view/title": [
         {
-          "command": "kiroCodex.menu.open",
-          "when": "view == kiroCodex.views.overview",
+          "command": "specCodex.menu.open",
+          "when": "view == specCodex.views.overview",
           "group": "navigation"
         },
         {
-          "command": "kiroCodex.spec.create",
-          "when": "view == kiroCodex.views.specExplorer",
+          "command": "specCodex.spec.create",
+          "when": "view == specCodex.views.specExplorer",
           "group": "navigation@1"
         },
         {
-          "command": "kiroCodex.spec.refresh",
-          "when": "view == kiroCodex.views.specExplorer",
+          "command": "specCodex.spec.refresh",
+          "when": "view == specCodex.views.specExplorer",
           "group": "navigation@3"
         },
         {
-          "command": "kiroCodex.steering.generateInitial",
-          "when": "view == kiroCodex.views.steeringExplorer",
+          "command": "specCodex.steering.generateInitial",
+          "when": "view == specCodex.views.steeringExplorer",
           "group": "navigation@2"
         },
         {
-          "command": "kiroCodex.steering.create",
-          "when": "view == kiroCodex.views.steeringExplorer",
+          "command": "specCodex.steering.create",
+          "when": "view == specCodex.views.steeringExplorer",
           "group": "navigation@1"
         },
         {
-          "command": "kiroCodex.steering.refresh",
-          "when": "view == kiroCodex.views.steeringExplorer",
+          "command": "specCodex.steering.refresh",
+          "when": "view == specCodex.views.steeringExplorer",
           "group": "navigation@3"
         },
         {
-          "command": "kiroCodex.prompts.create",
-          "when": "view == kiroCodex.views.promptsExplorer",
+          "command": "specCodex.prompts.create",
+          "when": "view == specCodex.views.promptsExplorer",
           "group": "navigation@1"
         },
         {
-          "command": "kiroCodex.prompts.refresh",
-          "when": "view == kiroCodex.views.promptsExplorer",
+          "command": "specCodex.prompts.refresh",
+          "when": "view == specCodex.views.promptsExplorer",
           "group": "navigation@2"
         }
       ],
       "view/item/context": [
         {
-          "command": "kiroCodex.spec.delete",
-          "when": "view == kiroCodex.views.specExplorer && viewItem == spec",
+          "command": "specCodex.spec.delete",
+          "when": "view == specCodex.views.specExplorer && viewItem == spec",
           "group": "7_modification"
         },
         {
-          "command": "kiroCodex.prompts.run",
-          "when": "view == kiroCodex.views.promptsExplorer && viewItem == prompt",
+          "command": "specCodex.prompts.run",
+          "when": "view == specCodex.views.promptsExplorer && viewItem == prompt",
           "group": "inline"
         },
         {
-          "command": "kiroCodex.steering.refine",
-          "when": "view == kiroCodex.views.steeringExplorer && viewItem == steering-document",
+          "command": "specCodex.steering.refine",
+          "when": "view == specCodex.views.steeringExplorer && viewItem == steering-document",
           "group": "inline"
         },
         {
-          "command": "kiroCodex.steering.delete",
-          "when": "view == kiroCodex.views.steeringExplorer && viewItem == steering-document",
+          "command": "specCodex.steering.delete",
+          "when": "view == specCodex.views.steeringExplorer && viewItem == steering-document",
           "group": "7_modification"
         }
       ],
       "commandPalette": [
         {
-          "command": "kiroCodex.spec.create"
+          "command": "specCodex.spec.create"
         },
         {
-          "command": "kiroCodex.prompts.create",
+          "command": "specCodex.prompts.create",
           "when": "workspaceFolderCount > 0"
         },
         {
-          "command": "kiroCodex.steering.create",
+          "command": "specCodex.steering.create",
           "when": "workspaceFolderCount > 0"
         },
         {
-          "command": "kiroCodex.checkForUpdates"
+          "command": "specCodex.checkForUpdates"
         }
       ]
     }

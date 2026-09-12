@@ -28,7 +28,7 @@ Follow this organization and naming to keep the codebase consistent.
   - `specs/<spec>/requirements.md|design.md|tasks.md`
   - `steering/product.md|tech.md|structure.md`
   - `prompts/<name>.md`
-  - `settings/kiroCodex-settings.json`
+  - `settings/specCodex-settings.json`
 - `tests/`
   - `unit/providers/codex-provider.test.ts` exercises STDIN piping, Windows pipeline, and `executePlan` branching.
   - `integration/codex-provider-terminal.test.ts` verifies POSIX/PowerShell command construction against the real `CommandBuilder`.

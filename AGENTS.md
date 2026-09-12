@@ -1,4 +1,4 @@
-# AGENTS.md — Kiro for Codex
+# AGENTS.md — Spec for Codex
 
 This file defines the agent contract and serves as the index to project guidance. It applies repo‑wide unless overridden by a nested `AGENTS.md`.
 

@@ -33,7 +33,7 @@ Use these conventions when building and maintaining the extension.
 ## Common Commands (developer)
 - Build: `npm run build` (esbuild + Vite)
 - Run (VS Code): press F5 (Extension Development Host)
-- Package: `npm run package` → `kiro-for-codex-<version>.vsix`
+- Package: `npm run package` → `spec-for-codex-<version>.vsix`
 - Tests: `npm test` (Vitest suite includes cross-platform Codex execution coverage)
 
 ## Project-Specific Conventions
@@ -44,5 +44,5 @@ Use these conventions when building and maintaining the extension.
   - Services encapsulate IO/process concerns in `services/` (prompt loading, error handling, command building, retries).
   - Prompt sources in `src/prompts` with generated TypeScript in `src/prompts/target`.
 - Respect feature flags in `src/constants.ts` to hide/disable views and commands.
-- Only `paths.*` in `.codex/settings/kiroCodex-settings.json` affect runtime resolution; other behavior is configured via VS Code settings (`kiroCodex.*`).
+- Only `paths.*` in `.codex/settings/specCodex-settings.json` affect runtime resolution; other behavior is configured via VS Code settings (`specCodex.*`).
 - Never block the extension host thread; use VS Code progress notifications and split terminals for long Codex runs.

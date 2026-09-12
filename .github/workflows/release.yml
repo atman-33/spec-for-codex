@@ -109,7 +109,7 @@ jobs:
           generate_release_notes: true
           name: Release v${{ steps.get_version.outputs.VERSION }}
           body: |
-            ## 🎉 Kiro for Codex v${{ steps.get_version.outputs.VERSION }}
+            ## 🎉 Spec for Codex v${{ steps.get_version.outputs.VERSION }}
             
             ${{ steps.extract_changelog.outputs.CHANGELOG }}
             
@@ -118,19 +118,19 @@ jobs:
             **From Extension Marketplace:**
             ```bash
             # VSCode (from VSCode Marketplace)
-            code --install-extension atman-33.kiro-for-codex
+            code --install-extension atman-33.spec-for-codex
             ```
             
             **From VSIX file:**
             Download the `.vsix` file from assets below and install:
             ```bash
             # VSCode
-            code --install-extension kiro-for-codex-${{ steps.get_version.outputs.VERSION }}.vsix
+            code --install-extension spec-for-codex-${{ steps.get_version.outputs.VERSION }}.vsix
             ```
             
             ### Links
-            - [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=atman-dev.kiro-for-codex)
-            - [Documentation](https://github.com/atman-33/kiro-for-codex#readme)
+            - [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=atman-dev.spec-for-codex)
+            - [Documentation](https://github.com/atman-33/spec-for-codex#readme)
             
             ---
             See below for auto-generated release notes.

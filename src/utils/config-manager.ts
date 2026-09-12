@@ -2,9 +2,9 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { CONFIG_FILE_NAME, DEFAULT_PATHS, SETTINGS_DIR } from "../constants";
 
-// Minimal project-local settings persisted under .codex/settings/kiroCodex-settings.json
-// Only "paths" are honored by the extension. Other runtime configs live in VS Code settings (kiroCodex.*).
-export interface KiroCodexSettings {
+// Minimal project-local settings persisted under .codex/settings/specCodex-settings.json
+// Only "paths" are honored by the extension. Other runtime configs live in VS Code settings (specCodex.*).
+export interface SpecCodexSettings {
 	paths: {
 		specs: string;
 		steering: string;
@@ -13,7 +13,7 @@ export interface KiroCodexSettings {
 
 export class ConfigManager {
 	private static instance: ConfigManager;
-	private settings: KiroCodexSettings | null = null;
+	private settings: SpecCodexSettings | null = null;
 	private workspaceFolder: vscode.WorkspaceFolder | undefined;
 
 	// Internal constants
@@ -30,7 +30,7 @@ export class ConfigManager {
 		return ConfigManager.instance;
 	}
 
-	async loadSettings(): Promise<KiroCodexSettings> {
+	async loadSettings(): Promise<SpecCodexSettings> {
 		if (!this.workspaceFolder) {
 			return this.getDefaultSettings();
 		}
@@ -56,7 +56,7 @@ export class ConfigManager {
 		}
 	}
 
-	getSettings(): KiroCodexSettings {
+	getSettings(): SpecCodexSettings {
 		if (!this.settings) {
 			this.settings = this.getDefaultSettings();
 		}
@@ -79,7 +79,7 @@ export class ConfigManager {
 		return ConfigManager.TERMINAL_VENV_ACTIVATION_DELAY;
 	}
 
-	private getDefaultSettings(): KiroCodexSettings {
+	private getDefaultSettings(): SpecCodexSettings {
 		return {
 			paths: {
 				specs: DEFAULT_PATHS.specs,
@@ -88,7 +88,7 @@ export class ConfigManager {
 		};
 	}
 
-	private mergeWithDefaults(settings: any): KiroCodexSettings {
+	private mergeWithDefaults(settings: any): SpecCodexSettings {
 		const defaults = this.getDefaultSettings();
 		const incomingPaths = settings?.paths ?? {};
 		return {
@@ -99,7 +99,7 @@ export class ConfigManager {
 		};
 	}
 
-	async saveSettings(settings: KiroCodexSettings): Promise<void> {
+	async saveSettings(settings: SpecCodexSettings): Promise<void> {
 		if (!this.workspaceFolder) {
 			throw new Error("No workspace folder found");
 		}

@@ -66,7 +66,7 @@ export class CodexSetupService {
 				break;
 			case "Retry Check":
 				// This will be handled by the caller
-				vscode.commands.executeCommand("kiro.checkCodexAvailability");
+				vscode.commands.executeCommand("specCodex.checkCodexAvailability");
 				break;
 		}
 	}
@@ -134,12 +134,12 @@ codex auth login
 codex --help
 \`\`\`
 
-## Configuration in Kiro
+## Configuration in Spec for Codex
 
 After installing Codex CLI, you can configure it in VS Code settings:
 
 1. Open VS Code Settings (Ctrl/Cmd + ,)
-2. Search for "kiro codex"
+2. Search for "spec for codex"
 3. Configure the following options:
    - **Codex Path**: Path to the codex executable (default: "codex")
    - **Default Approval Mode**: How Codex should handle code changes
@@ -153,7 +153,7 @@ If you encounter issues, try:
 1. **Check PATH**: Ensure codex is in your system PATH
 2. **Permissions**: Make sure you have execute permissions
 3. **Network**: Verify internet connectivity for authentication
-4. **Logs**: Check the Kiro output channel for detailed error messages
+4. **Logs**: Check the Spec for Codex output channel for detailed error messages
 
 For more help, visit: https://docs.openai.com/codex-cli/installation`;
 	}
@@ -420,7 +420,7 @@ env | grep -i codex        # Codex-related environment variables
 
 ### 1. Check Logs
 - VS Code Developer Console: Help > Toggle Developer Tools
-- Kiro Output Channel: View > Output > Select "Kiro"
+- Spec for Codex Output Channel: View > Output > Select "Spec for Codex"
 
 ### 2. Community Support
 - GitHub Issues: https://github.com/openai/codex-cli/issues

@@ -42,7 +42,7 @@ export class SteeringExplorerProvider
 
 	async getChildren(element?: SteeringItem): Promise<SteeringItem[]> {
 		if (!element) {
-			// Root level - show loading state or KIRO.md files
+			// Root level - show loading state or steering files
 			const items: SteeringItem[] = [];
 
 			if (this.isLoading) {
@@ -140,7 +140,7 @@ export class SteeringExplorerProvider
 						"",
 						this.context,
 						{
-							command: "kiroCodex.steering.createUserRule",
+							command: "specCodex.steering.createUserRule",
 							title: "Create Global Configuration",
 						},
 					),
@@ -156,7 +156,7 @@ export class SteeringExplorerProvider
 						"",
 						this.context,
 						{
-							command: "kiroCodex.steering.createProjectRule",
+							command: "specCodex.steering.createProjectRule",
 							title: "Create Agents Configuration",
 						},
 					),
