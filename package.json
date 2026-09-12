@@ -2,7 +2,7 @@
   "name": "spec-for-codex",
   "displayName": "Spec for Codex",
   "description": "Spec-driven development with Codex CLI - compatible with Kiro. Not affiliated with Amazon or AWS.",
-  "version": "0.7.1",
+  "version": "1.0.0",
   "author": "atman-33",
   "publisher": "atman-dev",
   "icon": "icon.png",
