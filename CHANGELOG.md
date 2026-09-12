@@ -4,13 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## Unreleased
+## v1.0.0 2026-09-12
 
 ### Changed
 
-- Rename the project from "Kiro for Codex" to "Spec for Codex" to comply with Amazon's trademark request: product name, command IDs, settings namespace, and icons. "Kiro" is now used only to describe compatibility.
-
----
+- Merge pull request #55 from atman-33/task/T-0171
+- rename Kiro for Codex to Spec for Codex
+- Merge pull request #52 from atman-33/version-bump/v0.7.1
 
 ## v0.7.1 2025-09-27
 
